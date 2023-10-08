@@ -1,6 +1,6 @@
 import { Formik, Field, Form } from 'formik';
 
-export const ContactForm = () => {
+export const ContactForm = ({ onAdd }) => {
   return (
     <div>
       <Formik
@@ -8,9 +8,9 @@ export const ContactForm = () => {
           name: '',
           number: '',
         }}
-        onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={(values, actions) => {
+          onAdd(values);
+          actions.resetForm();
         }}
       >
         <Form>
