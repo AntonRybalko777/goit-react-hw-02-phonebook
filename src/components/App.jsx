@@ -6,14 +6,14 @@ import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      { id: 'id-5', name: 'Anton Rybalko', number: '123-45-67' },
-    ],
+    contacts: [],
     filter: '',
+  };
+
+  checkDuplicate = enteredName => {
+    return this.state.contacts.find(contact => {
+      return contact.name === enteredName;
+    });
   };
 
   changeFilter = value => {
@@ -32,7 +32,15 @@ export class App extends Component {
 
   addContact = newContact => {
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, { ...newContact, id: nanoid() }],
+      contacts: [
+        ...prevState.contacts,
+        {
+          ...newContact,
+          name: newContact.name.trim(),
+          number: newContact.number.trim(),
+          id: nanoid(),
+        },
+      ],
     }));
   };
 
@@ -50,7 +58,10 @@ export class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm onAdd={this.addContact} />
+        <ContactForm
+          onAdd={this.addContact}
+          checkDuplicate={this.checkDuplicate}
+        />
         <h2>Contacts</h2>
         <Filter onChange={this.changeFilter} />
         <ContactList
