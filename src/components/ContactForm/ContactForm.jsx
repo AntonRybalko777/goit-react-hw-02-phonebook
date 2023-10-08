@@ -21,7 +21,7 @@ export const ContactForm = ({ onAdd }) => {
 
           <label>
             Number
-            <Field name="number" />
+            <Field name="number" placeholder="111-22-33" />
           </label>
 
           <button type="submit">Add contact</button>
