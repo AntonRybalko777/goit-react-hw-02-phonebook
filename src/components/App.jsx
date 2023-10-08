@@ -12,17 +12,31 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
+
+  changeFilter = value => {
+    this.setState(() => ({
+      filter: value,
+    }));
+  };
+
+  filterContacts = () => {
+    return this.state.contacts.filter(contact => {
+      return contact.name
+        .toLowerCase()
+        .includes(this.state.filter.toLowerCase());
+    });
+  };
+
   render() {
+    const filteredContacts = this.filterContacts();
     return (
       <div>
         <h1>Phonebook</h1>
         <ContactForm />
         <h2>Contacts</h2>
-        <Filter />
-        <ContactList contacts={this.state.contacts} />
+        <Filter onChange={this.changeFilter} />
+        <ContactList contacts={filteredContacts} />
       </div>
     );
   }
