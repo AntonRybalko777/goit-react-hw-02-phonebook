@@ -1,14 +1,23 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Notiflix from 'notiflix';
+import {
+  StyledField,
+  Label,
+  StyledForm,
+  StyledErrorMessage,
+} from './ContactForm.styled';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Min length is 2')
+    .max(20, 'Max length is 20')
     .required('This field is required'),
-  number: Yup.number()
-    .min(0, 'Must be a number')
-    .required('This field is required'),
+  number: Yup.string()
+    .required('This field is required')
+    .matches(/^[0-9]+$/, 'Must be only digits')
+    .min(7, 'Min length is 7')
+    .max(12, 'Max length is 12'),
 });
 
 export const ContactForm = ({ onAdd, checkDuplicate }) => {
@@ -32,21 +41,21 @@ export const ContactForm = ({ onAdd, checkDuplicate }) => {
           }
         }}
       >
-        <Form>
-          <label>
+        <StyledForm>
+          <Label>
             Name
-            <Field name="name" />
-            <ErrorMessage name="name" />
-          </label>
+            <StyledField name="name" />
+            <StyledErrorMessage name="name" component="div" />
+          </Label>
 
-          <label>
+          <Label>
             Number
-            <Field name="number" />
-            <ErrorMessage name="number" />
-          </label>
+            <StyledField name="number" />
+            <StyledErrorMessage name="number" component="div" />
+          </Label>
 
           <button type="submit">Add contact</button>
-        </Form>
+        </StyledForm>
       </Formik>
     </div>
   );
