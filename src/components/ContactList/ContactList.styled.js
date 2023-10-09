@@ -40,6 +40,7 @@ export const Button = styled.button`
   &:hover {
     svg {
       color: red;
+      transform: scale(1.2);
     }
   }
 
