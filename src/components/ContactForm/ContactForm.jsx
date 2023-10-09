@@ -1,6 +1,8 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Notiflix from 'notiflix';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+
 import {
   StyledField,
   Label,
@@ -55,7 +57,10 @@ export const ContactForm = ({ onAdd, checkDuplicate }) => {
             <StyledErrorMessage name="number" component="div" />
           </Label>
 
-          <Button type="submit">Add contact</Button>
+          <Button type="submit">
+            <AiOutlinePlusCircle />
+            Add contact
+          </Button>
         </StyledForm>
       </Formik>
     </div>

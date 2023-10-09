@@ -34,7 +34,7 @@ export const StyledErrorMessage = styled(ErrorMessage)`
 
 export const Button = styled.button`
   border: 0;
-  width: 150px;
+  max-width: 160px;
   border-radius: 5px;
   background: #4676d7;
   color: #fff;
@@ -42,6 +42,11 @@ export const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
   transition: 200ms ease-in;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 
   &:hover,
   :focus {
