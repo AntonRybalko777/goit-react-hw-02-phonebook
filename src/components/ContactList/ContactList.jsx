@@ -11,7 +11,7 @@ export const ContactList = ({ contacts, onDelete }) => {
           <Button
             onClick={() => {
               Notiflix.Notify.info(
-                `${contact.name} has been removed from the contacs`
+                `${contact.name} has been removed from the contacts`
               );
               onDelete(contact.id);
             }}
