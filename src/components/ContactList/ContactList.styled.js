@@ -9,6 +9,7 @@ export const Li = styled.li`
   padding: 5px;
   position: relative;
   border-radius: 5px;
+  transition: 200ms ease-in;
 
   &:nth-child(1n + 2) {
     border-top: 1px solid #e8e8e8;
