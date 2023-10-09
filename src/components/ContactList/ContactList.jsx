@@ -1,18 +1,25 @@
+import Notiflix from 'notiflix';
+import { Button, Li, Ul } from './ContactList.styled';
+import { AiFillDelete } from 'react-icons/ai';
+
 export const ContactList = ({ contacts, onDelete }) => {
   return (
-    <ul>
+    <Ul>
       {contacts.map(contact => (
-        <li key={contact.id}>
-          {contact.name}: {contact.number}
-          <button
+        <Li key={contact.id}>
+          {contact.name} : {contact.number}
+          <Button
             onClick={() => {
+              Notiflix.Notify.info(
+                `${contact.name} has been removed from the contacs`
+              );
               onDelete(contact.id);
             }}
           >
-            Delete
-          </button>
-        </li>
+            <AiFillDelete size={15} />
+          </Button>
+        </Li>
       ))}
-    </ul>
+    </Ul>
   );
 };

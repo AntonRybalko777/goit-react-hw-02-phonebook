@@ -3,7 +3,7 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import { ContactList } from '../ContactList/ContactList';
 import { Filter } from '../Filter/Filter';
 import { nanoid } from 'nanoid';
-import { Container } from './App.styled';
+import { Container, Span } from './App.styled';
 
 export class App extends Component {
   state = {
@@ -64,7 +64,12 @@ export class App extends Component {
           checkDuplicate={this.checkDuplicate}
         />
         <h2>Contacts</h2>
-        <Filter onChange={this.changeFilter} />
+        {this.state.contacts.length > 0 ? (
+          <Filter onChange={this.changeFilter} />
+        ) : (
+          <Span>Contact list is empty</Span>
+        )}
+
         <ContactList
           contacts={filteredContacts}
           onDelete={this.deleteContact}

@@ -31,3 +31,20 @@ export const StyledErrorMessage = styled(ErrorMessage)`
   position: absolute;
   bottom: 0;
 `;
+
+export const Button = styled.button`
+  border: 0;
+  width: 150px;
+  border-radius: 5px;
+  background: #4676d7;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 200ms ease-in;
+
+  &:hover,
+  :focus {
+    background: #739ef5;
+  }
+`;

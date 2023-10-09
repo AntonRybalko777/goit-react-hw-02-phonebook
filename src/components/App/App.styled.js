@@ -7,3 +7,8 @@ export const Container = styled.div`
   margin: 30px auto;
   padding: 20px;
 `;
+
+export const Span = styled.span`
+  font-size: 15px;
+  color: grey;
+`;

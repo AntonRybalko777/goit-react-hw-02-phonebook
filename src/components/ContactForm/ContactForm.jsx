@@ -6,6 +6,7 @@ import {
   Label,
   StyledForm,
   StyledErrorMessage,
+  Button,
 } from './ContactForm.styled';
 
 const contactSchema = Yup.object().shape({
@@ -50,11 +51,11 @@ export const ContactForm = ({ onAdd, checkDuplicate }) => {
 
           <Label>
             Number
-            <StyledField name="number" />
+            <StyledField type="tel" name="number" />
             <StyledErrorMessage name="number" component="div" />
           </Label>
 
-          <button type="submit">Add contact</button>
+          <Button type="submit">Add contact</Button>
         </StyledForm>
       </Formik>
     </div>

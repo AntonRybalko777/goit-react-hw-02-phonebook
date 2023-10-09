@@ -1,15 +1,17 @@
+import { Input, Label } from './Filter.styled';
+
 export const Filter = ({ onChange }) => {
   return (
     <div>
-      <label>
+      <Label>
         Find contacts by name
-        <input
+        <Input
           type="text"
           onChange={evt => {
             onChange(evt.target.value);
           }}
         />
-      </label>
+      </Label>
     </div>
   );
 };
